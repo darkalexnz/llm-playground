@@ -1,20 +1,70 @@
 # Co-Design Agent
 
-Brief for copliot/Claude:
+A lightweight design companion for structuring, researching, and executing design tasks. It works through a task document as a living plan, invokes modular skills to produce specific outputs, and keeps everything in one folder per task.
 
-The codesign agent acecpts a design task from the user or another agent. 
+---
 
-It collects and collates information, resources, and outlines its understanding of the request including inputs, process, and outputs. 
+## How it works
 
-It creates a 'task-[task-name].md file that has two key sections: ## Research and ## Planning which is completed as much as possible with assumptions marked and open questions listed inline clearly to the user and/or collected at the end of the planning section. 
-[Create a template for this based on /Users/abc/Desktop/llm-playground/WORKSPACE.md but simpler]
+1. **Start a task** — give the agent a design problem, brief, or question
+2. **Research** — the agent gathers context, surfaces assumptions, asks what it needs, and populates the `## Research` section of the task doc
+3. **Plan** — the agent outlines the approach, identifies which skills to invoke, and lists expected outputs — you review and approve
+4. **Execute** — invoke skills explicitly; each produces an output file in the task folder, linked from the task doc
+5. **Iterate** — the task doc evolves with the work and serves as the reference across sessions
 
-task-[task-name].md files go in a like-named folder task-[task-name]
+---
 
-The agent has a list of skills which are specific discovery/design/define/deliver/development/product. They all have a template document that is copied for a specific task if it is invoked.
+## Task folder structure
 
+Each task lives in its own folder. The task doc is the source of truth. All skill outputs go alongside it, linked from the task doc.
 
-To do
-- [ ] List some quesitons for me to help us design this agent
-- [ ] Write this readme to be as descriptive and helpful as possible, including this to do or a task tracker
-- [ ] Add comprehensive tasks to build out this agent in 2-3 phases. First phase is me and you defining its use/design. 
+```
+task-[name]/
+  task-[name].md          ← living plan: brief, context, Research, Planning, output links
+  wireframes.md           ← skill output (example)
+  prd.md                  ← skill output (example)
+```
+
+Task folders live wherever the work belongs — not inside this agent folder.
+
+---
+
+## Skill catalogue
+
+Skills are grouped by design phase. Each is invoked explicitly by the user and produces its own output file in the task folder.
+
+| Group | Skill | Use when |
+|---|---|---|
+| **Discover** | stakeholder-map | Mapping who is involved, their roles and influence |
+| | user-journey | Documenting the current experience step by step |
+| | assumption-register | Capturing and tracking unvalidated assumptions |
+| | research-synthesis | Synthesising research into themes and insights |
+| **Define** | problem-statements | Framing what problem is being solved and for whom |
+| | personas | Defining the key user types and their needs |
+| | pain-point-matrix | Cataloguing pain points by severity and frequency |
+| | success-metrics | Defining how success will be measured |
+| **Design** | wireframes | Sketching screens and layouts in structured Markdown |
+| | user-flows | Mapping step-by-step flows through an experience |
+| | information-architecture | Structuring navigation and content hierarchy |
+| | feasibility-notes | Documenting constraints and implementation risks |
+| **Deliver** | user-stories | Writing stories for development: As a / I want / So that |
+| | acceptance-criteria | Writing Given / When / Then criteria per story |
+| | state-matrix | Documenting all UI states for a component or flow |
+| | prd | Writing a product requirements document for engineering handoff |
+
+Skills are composable — a task can invoke multiple skills, each producing a separate output file.
+
+---
+
+## Project tracker
+
+### Phase 1 — Define the agent
+- [x] Design sessions: define skills, architecture, and scope
+- [x] Rewrite `README.md`
+- [x] Write `CLAUDE.md`
+- [ ] Write `templates/task-template.md`
+- [ ] Write all 16 skill files (`skills/[group]/[skill].md`)
+
+### Phase 2 — Validate
+- [ ] Run a test task end-to-end
+- [ ] Refine based on real usage
