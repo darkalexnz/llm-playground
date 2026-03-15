@@ -34,6 +34,8 @@ See `about-user.md` for full profile.
 
 **Never produce deliverables until a written plan has been reviewed and approved by the user.**
 
+All plan documents are stored at the **workspace root** in `task-plans/plan-[task-name].md` — never inside a project subdirectory. Research and planning live in the same document.
+
 Run all three phases in a single continuous session where possible.
 
 ---
@@ -41,13 +43,13 @@ Run all three phases in a single continuous session where possible.
 ### Phase 1 — Research
 
 1. Explore the relevant codebase, documents, or context thoroughly — unhurried, in depth
-2. Write findings to a persistent file: `tier-3-work/research-[task-name].md`
+2. Write findings into the **Research** section of `task-plans/plan-[task-name].md` (create the file and folder if needed)
 3. **Stop. Surface to the user:**
 
-   > Research complete — see `research-[task-name].md`.
-   > Before I plan, please confirm:
-   > - Anything missing, misread, or misunderstood? *(annotate the file or reply here)*
-   > - Any constraints or domain knowledge I should factor in? *(short note or detailed — both fine)*
+   > Research complete — see `task-plans/plan-[task-name].md`.
+   > Before I write the plan, please confirm:
+   > - Anything missing, misread, or misunderstood? *(annotate the file or reply here — short or long)*
+   > - Any constraints or domain knowledge I should factor in?
    > - Ready to proceed to planning? *(yes / or notes first)*
 
 4. Do not begin planning until the user responds.
@@ -56,14 +58,14 @@ Run all three phases in a single continuous session where possible.
 
 ### Phase 2 — Plan
 
-1. Write a detailed plan to `tier-3-work/plan-[task-name].md` — include rationale, file paths, steps, trade-offs, and a **granular task checklist** at the end
+1. Append a **Plan** section to the same `task-plans/plan-[task-name].md` — include rationale, file paths, steps, trade-offs, and a **granular task checklist** at the end
 2. **Stop. Surface to the user:**
 
-   > Plan written — see `plan-[task-name].md`.
+   > Plan added to `task-plans/plan-[task-name].md`.
    > Please review and annotate directly in the file, or reply here:
    > - Steps to remove, reorder, or replace? *(mark in the file or list here)*
    > - Technical or domain constraints I've missed? *(e.g. "use X", "don't touch Y")*
-   > - Scope to cut before we start? *(now is the time)*
+   > - Scope to cut before we start?
    > - Approved to implement? *(yes / or list changes — I'll revise before starting)*
 
 3. Revise the plan based on feedback. Repeat this cycle until the user explicitly approves.
@@ -76,7 +78,7 @@ Run all three phases in a single continuous session where possible.
 Triggered only by explicit user approval of the plan.
 
 1. Execute the full approved plan — do not pause mid-implementation for confirmation
-2. Mark tasks complete in the plan document as you go
+2. Mark tasks complete in the plan document checklist as you go
 3. Run typechecks continuously where applicable
 4. If something unexpected blocks progress, **stop and surface** — do not patch around it:
 
@@ -97,4 +99,4 @@ Triggered only by explicit user approval of the plan.
 - The user's annotations (short or long) take precedence over the LLM's assumptions at every phase
 
 ---
-*WORKSPACE.md v1.1*
+*WORKSPACE.md v1.2*
