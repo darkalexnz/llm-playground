@@ -2,24 +2,7 @@
 
 ## Summary for New Chat Bootstrap
 
----
-
-### About Me
-
-- UX Designer at a New Zealand telco, sole designer on a 10-person product team
-- Background: 6 years running a Design Thinking-led software design/dev company (NLP, RPA projects), wide UI/UX experience across consumer and internal products, Webflow, WordPress, HTML, CSS, JS, Python, one year CS at university
-- Strong systems thinker, comfortable with software concepts, below dev team's technical level in practice
-- Working on mass gaining, short daily morning resistance training, interest in nutrition optimisation
-- Preference for concise, direct communication — feedback applied holistically, not line by line
-
----
-
-### My Goals
-
-- Reduce the design bottleneck: highest-leverage contribution as sole designer for 8+ developers
-- Upskill in AI-augmented design workflow: rapid prototyping, high-fidelity handoff, AI tool integration across the full pipeline
-- Build long-term employability as a high-value design practitioner in an AI-native product development environment
-- Not a goal to make regular frontend code contributions — code literacy matters as a reading/communication skill only
+> **User profile:** See `../../../../about-user.md`
 
 ---
 
@@ -103,11 +86,3 @@ A group of agents supporting the human design and development team across the fu
 2. Build `component-library-reference.md` first among Tier 2 docs
 3. Run one end-to-end test on a real upcoming design task
 
----
-
-### Working Preferences Noted
-
-- One document at a time — agree template before moving on
-- Artefacts preferred over inline markdown for documents (copy button, side panel)
-- Set up a Claude Project to host this work — paste context brief as project instruction, build each document as an Artifact within project conversations
-- Context brief (`design-brief.md`) already built and downloadable from this conversation — use it as the Project's base context document
