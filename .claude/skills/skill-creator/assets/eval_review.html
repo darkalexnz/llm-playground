@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Trigger Eval Review — __SKILL_NAME_PLACEHOLDER__</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: system-ui, sans-serif; background: #f5f5f5; color: #222; padding: 24px; }
+  h1 { font-size: 1.1rem; font-weight: 600; margin-bottom: 4px; }
+  .description { font-size: 0.85rem; color: #555; background: white; border: 1px solid #e0e0e0; border-radius: 6px; padding: 12px; margin-bottom: 20px; max-width: 760px; }
+  .description strong { display: block; margin-bottom: 4px; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.05em; color: #888; }
+  .controls { display: flex; gap: 10px; margin-bottom: 16px; }
+  .controls button { padding: 7px 14px; border-radius: 5px; border: 1px solid #ccc; background: white; cursor: pointer; font-size: 0.875rem; }
+  .controls button:hover { background: #f0f0f0; }
+  .export-btn { background: #1a1a2e !important; color: white !important; border-color: #1a1a2e !important; font-weight: 600; }
+  .export-btn:hover { background: #2d2d52 !important; }
+  .eval-list { max-width: 760px; display: flex; flex-direction: column; gap: 8px; }
+  .eval-item { background: white; border: 1px solid #e0e0e0; border-radius: 6px; padding: 12px 14px; display: flex; align-items: flex-start; gap: 12px; }
+  .eval-item.should-trigger { border-left: 3px solid #16a34a; }
+  .eval-item.should-not-trigger { border-left: 3px solid #dc2626; }
+  .toggle { flex-shrink: 0; display: flex; flex-direction: column; align-items: center; gap: 3px; }
+  .toggle button { width: 36px; height: 20px; border-radius: 10px; border: none; cursor: pointer; font-size: 0.65rem; font-weight: 700; }
+  .toggle .yes-btn { background: #dcfce7; color: #166534; }
+  .toggle .no-btn { background: #fee2e2; color: #991b1b; }
+  .toggle button.active { opacity: 1; box-shadow: 0 0 0 2px currentColor; }
+  .toggle button:not(.active) { opacity: 0.4; }
+  .query-wrap { flex: 1; }
+  .query-input { width: 100%; border: none; font-size: 0.875rem; resize: none; outline: none; background: transparent; min-height: 38px; }
+  .del-btn { flex-shrink: 0; background: none; border: none; cursor: pointer; color: #bbb; font-size: 1rem; padding: 2px 4px; }
+  .del-btn:hover { color: #ef4444; }
+  .badge { font-size: 0.7rem; font-weight: 600; padding: 1px 7px; border-radius: 8px; display: inline-block; margin-top: 3px; }
+  .badge.trigger { background: #dcfce7; color: #166534; }
+  .badge.no-trigger { background: #fee2e2; color: #991b1b; }
+  .stats { font-size: 0.8rem; color: #888; margin-bottom: 14px; }
+</style>
+</head>
+<body>
+<h1>Trigger Eval Review — __SKILL_NAME_PLACEHOLDER__</h1>
+<div class="description">
+  <strong>Current Description</strong>
+  __SKILL_DESCRIPTION_PLACEHOLDER__
+</div>
+<p class="stats" id="stats"></p>
+<div class="controls">
+  <button onclick="addEval(true)">+ Should Trigger</button>
+  <button onclick="addEval(false)">+ Should Not Trigger</button>
+  <button class="export-btn" onclick="exportSet()">Export Eval Set</button>
+</div>
+<div class="eval-list" id="eval-list"></div>
+
+<script>
+let evals = __EVAL_DATA_PLACEHOLDER__;
+
+function render() {
+  const list = document.getElementById('eval-list');
+  list.innerHTML = '';
+  evals.forEach((ev, i) => {
+    const div = document.createElement('div');
+    div.className = 'eval-item ' + (ev.should_trigger ? 'should-trigger' : 'should-not-trigger');
+    div.innerHTML = `
+      <div class="toggle">
+        <button class="yes-btn ${ev.should_trigger ? 'active' : ''}" onclick="setTrigger(${i}, true)">✓</button>
+        <button class="no-btn ${!ev.should_trigger ? 'active' : ''}" onclick="setTrigger(${i}, false)">✕</button>
+        <span class="badge ${ev.should_trigger ? 'trigger' : 'no-trigger'}">${ev.should_trigger ? 'trigger' : 'skip'}</span>
+      </div>
+      <div class="query-wrap">
+        <textarea class="query-input" rows="2" onchange="updateQuery(${i}, this.value)">${escapeHtml(ev.query)}</textarea>
+      </div>
+      <button class="del-btn" onclick="removeEval(${i})" title="Remove">✕</button>`;
+    list.appendChild(div);
+  });
+  const triggers = evals.filter(e => e.should_trigger).length;
+  document.getElementById('stats').textContent = `${evals.length} queries — ${triggers} should trigger, ${evals.length - triggers} should not`;
+}
+
+function setTrigger(i, val) { evals[i].should_trigger = val; render(); }
+function updateQuery(i, val) { evals[i].query = val; }
+function removeEval(i) { evals.splice(i, 1); render(); }
+function addEval(shouldTrigger) {
+  evals.push({ query: '', should_trigger: shouldTrigger });
+  render();
+  document.querySelectorAll('.query-input')[evals.length - 1].focus();
+}
+
+function exportSet() {
+  // Sync textarea values before exporting
+  document.querySelectorAll('.query-input').forEach((ta, i) => { evals[i].query = ta.value; });
+  const blob = new Blob([JSON.stringify(evals, null, 2)], { type: 'application/json' });
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(blob);
+  a.download = 'eval_set.json';
+  a.click();
+}
+
+function escapeHtml(str) {
+  return String(str).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+}
+
+render();
+</script>
+</body>
+</html>
