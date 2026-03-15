@@ -7,10 +7,10 @@ A lightweight design companion for structuring, researching, and executing desig
 ## How it works
 
 1. **Start a task** — give the agent a design problem, brief, or question
-2. **Research** — the agent gathers context, surfaces assumptions, asks what it needs, and populates the `## Research` section of the task doc
-3. **Plan** — the agent outlines the approach, identifies which skills to invoke, and lists expected outputs — you review and approve
-4. **Execute** — invoke skills explicitly; each produces an output file in the task folder, linked from the task doc
-5. **Iterate** — the task doc evolves with the work and serves as the reference across sessions
+2. **Research** — the agent gathers context and surfaces assumptions in the task doc
+3. **Plan** — the agent outlines the approach, identifies skills to invoke, and lists open questions — you review
+4. **Iterate** — answer open questions or add feedback; the agent updates the task doc and re-presents the plan until you approve
+5. **Execute** — approved skills run; each produces an output file in the task folder, linked from the task doc
 
 ---
 
@@ -62,8 +62,8 @@ Skills are composable — a task can invoke multiple skills, each producing a se
 - [x] Design sessions: define skills, architecture, and scope
 - [x] Rewrite `README.md`
 - [x] Write `CLAUDE.md`
-- [ ] Write `templates/task-template.md`
-- [ ] Write all 16 skill files (`skills/[group]/[skill].md`)
+- [x] Write `templates/task-template.md`
+- [ ] Write remaining skill files — 1/16 done (`skills/deliver/prd.md`)
 
 ### Phase 2 — Validate
 - [ ] Run a test task end-to-end
