@@ -66,6 +66,10 @@ If the user asks for a skill that doesn't exist in `skills/`, say so — do not 
 
 ---
 
+## References
+
+Reference docs live in `references/`. Load on demand when relevant to a skill — not auto-loaded every session.
+
 ## Rules
 
 - Never produce deliverables before Research and Planning are reviewed
