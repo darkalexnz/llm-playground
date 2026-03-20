@@ -107,3 +107,11 @@ Copy this section into `task-[name]/prd.md` and populate it.
 | # | Question | Owner | Status |
 |---|---|---|---|
 | 1 | | | Open |
+
+---
+
+## Portability
+
+- **ADO:** Copy Overview + Requirements into an Epic description. Each "Must have" row becomes a PBI. Attach this file to the Epic.
+- **SharePoint:** Renders as-is on a wiki page. Remove the Portability section before publishing.
+- **Figma:** Use the Design References table to link back to Figma frames. Paste Requirements into dev-mode notes if needed.

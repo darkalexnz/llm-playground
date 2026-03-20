@@ -20,7 +20,7 @@
 | Skills source | Draw from `agentic-product-design-system` — take the best tasks |
 | Who invokes skills? | User specifies. |
 | Are skills composable? | Yes — separate outputs, combined after. |
-| Technical form | Templates and instructions in `/projects/co-design-agent` |
+| Technical form | Templates and instructions in `/projects/codesign-agent` |
 | Memory/persistence | Task doc is the memory. Active session is working context. |
 | Tool integration | No direct integrations. Outputs usable in Figma, ADO etc. |
 | Workspace protocol | Same research → plan → approve → implement loop, task doc as living plan. |
@@ -36,7 +36,7 @@ Four domain skills, each with owned documents, output schemas, and activation co
 
 Also an **Orchestrator** — not needed here.
 
-The existing system is heavily structured (tiered memory, routing guides, handoff checklists). The co-design agent keeps only: output schemas, activation cues, and one template per skill.
+The existing system is heavily structured (tiered memory, routing guides, handoff checklists). The codesign agent keeps only: output schemas, activation cues, and one template per skill.
 
 ### Mapping original skill names
 
@@ -67,7 +67,7 @@ The README listed six skills. They map as follows — no new skill types needed:
 Each skill is its own file — the four D's are grouping folders, not single files. A skill file serves as both its definition and its output template (copy it into the task folder when invoked).
 
 ```
-co-design-agent/
+codesign-agent/
   README.md                         ← what this agent is and how to use it
   CLAUDE.md                         ← session instructions Claude loads automatically
   skills/

@@ -3,6 +3,7 @@
 **Brief:** [One sentence description of the task]
 **Date:** [YYYY-MM-DD]
 **Status:** Research | Planning | Iterating | Approved | In Progress | Complete
+**Project:** [Link to project-context.md if applicable]
 
 ---
 
@@ -14,17 +15,19 @@
 
 ## Research
 
-[What we know about this task — gathered from the user, referenced material, and existing context.]
+[What we know — gathered from user, referenced material, upstream task outputs, and existing context. Collapsed to key findings when Planning is approved.]
 
 ### What we know
 
 ### Assumptions
 
-> [ASSUMPTION] Mark each unvalidated assumption on its own line like this.
+> [ASSUMPTION] Mark each unvalidated assumption on its own line like this. Assumptions are never collapsed.
 
 ---
 
 ## Planning
+
+[Stays visible until the task is Complete.]
 
 ### Approach
 
@@ -34,7 +37,6 @@
 
 | Skill | Output file | Purpose |
 |---|---|---|
-| | | |
 
 ### Open questions
 
@@ -50,4 +52,3 @@
 
 | File | Skill | Status |
 |---|---|---|
-| | | |
