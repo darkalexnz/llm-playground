@@ -101,7 +101,7 @@ export function StyleDevPanel() {
     return (
       <button
         onClick={() => setIsOpen(true)}
-        className="fixed bottom-4 left-4 z-50 bg-foreground text-background text-[10px] font-semibold px-3 py-1.5 rounded-full shadow-lg hover:opacity-80 transition-opacity"
+        className="fixed bottom-4 left-4 bg-foreground text-background text-[10px] font-semibold px-3 py-1.5 rounded-full shadow-lg hover:opacity-80 transition-opacity"
         style={{ zIndex: 100 }}
       >
         ⚙ Style
