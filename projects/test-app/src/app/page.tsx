@@ -1,6 +1,7 @@
 "use client";
 
-import { useState, useRef, useEffect, useCallback } from "react";
+import { useState, useRef, useEffect } from "react";
+import { useDraggable } from "@/hooks/useDraggable";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { ScrollArea } from "@/components/ui/scroll-area";
@@ -28,43 +29,6 @@ function getMockResponse(): string {
   return MOCK_RESPONSES[Math.floor(Math.random() * MOCK_RESPONSES.length)];
 }
 
-function useDraggable(initialX: number, initialY: number) {
-  const [position, setPosition] = useState({ x: initialX, y: initialY });
-  const dragState = useRef<{ startX: number; startY: number; origX: number; origY: number } | null>(null);
-
-  const onMouseDown = useCallback((e: React.MouseEvent) => {
-    // Only drag from the handle, not from buttons/inputs inside it
-    if ((e.target as HTMLElement).closest("button")) return;
-    e.preventDefault();
-    dragState.current = {
-      startX: e.clientX,
-      startY: e.clientY,
-      origX: position.x,
-      origY: position.y,
-    };
-
-    const onMouseMove = (ev: MouseEvent) => {
-      if (!dragState.current) return;
-      const dx = ev.clientX - dragState.current.startX;
-      const dy = ev.clientY - dragState.current.startY;
-      setPosition({
-        x: dragState.current.origX + dx,
-        y: dragState.current.origY + dy,
-      });
-    };
-
-    const onMouseUp = () => {
-      dragState.current = null;
-      window.removeEventListener("mousemove", onMouseMove);
-      window.removeEventListener("mouseup", onMouseUp);
-    };
-
-    window.addEventListener("mousemove", onMouseMove);
-    window.addEventListener("mouseup", onMouseUp);
-  }, [position.x, position.y]);
-
-  return { position, onMouseDown };
-}
 
 export default function ChatPage() {
   const [messages, setMessages] = useState<Message[]>([]);
