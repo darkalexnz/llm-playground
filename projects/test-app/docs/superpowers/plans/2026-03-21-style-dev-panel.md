@@ -624,7 +624,7 @@ Find the messages container div (`className="px-4 py-4 space-y-4"`) and update t
 <div className="px-4 py-4" style={{ display: "flex", flexDirection: "column", gap: "var(--chat-message-gap)" }}>
 ```
 
-For bubble max-width: each message renders as a flex row (`flex gap-2.5`) containing an Avatar and a bubble div. The bubble div is the *inner* coloured div (the one with `rounded-2xl`, background class, and text content) — **not** the outer alignment wrapper. Apply `maxWidth` to that inner div and remove the `max-w-[75%]` Tailwind class from it:
+Find the bubble max-width (`max-w-[75%]`) and replace with inline style:
 
 ```tsx
 <div
