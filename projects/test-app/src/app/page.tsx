@@ -7,6 +7,7 @@ import { Input } from "@/components/ui/input";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { Avatar, AvatarFallback } from "@/components/ui/avatar";
 import { cn } from "@/lib/utils";
+import { StyleDevPanel } from "@/components/StyleDevPanel";
 
 interface Message {
   id: string;
@@ -28,7 +29,6 @@ const MOCK_RESPONSES = [
 function getMockResponse(): string {
   return MOCK_RESPONSES[Math.floor(Math.random() * MOCK_RESPONSES.length)];
 }
-
 
 export default function ChatPage() {
   const [messages, setMessages] = useState<Message[]>([]);
@@ -96,14 +96,18 @@ export default function ChatPage() {
         </Button>
       )}
 
+      <StyleDevPanel />
+
       {/* Draggable chat modal */}
       {isOpen && (
         <div
-          className="fixed flex flex-col w-[400px] h-[500px] rounded-xl border bg-background shadow-2xl overflow-hidden"
+          className="fixed flex flex-col rounded-xl border bg-background shadow-2xl overflow-hidden"
           style={{
             left: position.x,
             top: position.y,
             zIndex: 50,
+            width: "var(--chat-panel-width)",
+            height: "var(--chat-panel-height)",
           }}
         >
           {/* Drag handle / header */}
@@ -129,7 +133,7 @@ export default function ChatPage() {
 
           {/* Messages */}
           <ScrollArea className="flex-1" ref={scrollRef}>
-            <div className="px-4 py-4 space-y-4">
+            <div className="px-4 py-4" style={{ display: "flex", flexDirection: "column", gap: "var(--chat-message-gap)" }}>
               {messages.length === 0 && (
                 <div className="flex flex-col items-center justify-center pt-20 text-center text-muted-foreground">
                   <p className="text-sm font-medium">No messages yet</p>
@@ -159,11 +163,12 @@ export default function ChatPage() {
                   </Avatar>
                   <div
                     className={cn(
-                      "rounded-2xl px-3 py-2 max-w-[75%] text-sm leading-relaxed",
+                      "rounded-2xl px-3 py-2 text-sm leading-relaxed",
                       message.role === "user"
                         ? "bg-primary text-primary-foreground"
                         : "bg-muted"
                     )}
+                    style={{ maxWidth: "var(--chat-bubble-max-width)" }}
                   >
                     {message.content}
                   </div>
