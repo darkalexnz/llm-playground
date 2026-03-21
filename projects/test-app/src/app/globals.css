@@ -81,6 +81,12 @@
   --sidebar-accent-foreground: oklch(0.205 0 0);
   --sidebar-border: oklch(0.922 0 0);
   --sidebar-ring: oklch(0.708 0 0);
+  /* Chat layout — controlled by Style Dev Panel */
+  --chat-panel-width: 400px;
+  --chat-panel-height: 500px;
+  --chat-bubble-max-width: 75%;
+  --chat-message-gap: 16px;
+  --font-size-base: 14px;
 }
 
 .dark {
@@ -115,6 +121,11 @@
   --sidebar-accent-foreground: oklch(0.985 0 0);
   --sidebar-border: oklch(1 0 0 / 10%);
   --sidebar-ring: oklch(0.556 0 0);
+  --chat-panel-width: 400px;
+  --chat-panel-height: 500px;
+  --chat-bubble-max-width: 75%;
+  --chat-message-gap: 16px;
+  --font-size-base: 14px;
 }
 
 @layer base {
@@ -123,6 +134,7 @@
   }
   body {
     @apply bg-background text-foreground;
+    font-size: var(--font-size-base);
   }
   html {
     @apply font-sans;
